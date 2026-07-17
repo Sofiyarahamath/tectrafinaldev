@@ -25,7 +25,34 @@
   --color-color-neutral-950: #0a0a0a;
 
   --color-color-primary-main: #000000;
+  --color-color-info-main: #2563eb;
   --color-color-alpha-black-08: rgba(0, 0, 0, 0.08);
+  --color-color-alpha-white-08: rgba(255, 255, 255, 0.08);
+  --color-color-alpha-white-10: rgba(255, 255, 255, 0.1);
+}
+
+@font-face {
+  font-family: "Aspekta";
+  src: url("/fonts/Aspekta-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aspekta";
+  src: url("/fonts/Aspekta-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aspekta";
+  src: url("/fonts/Aspekta-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @media (prefers-color-scheme: dark) {
