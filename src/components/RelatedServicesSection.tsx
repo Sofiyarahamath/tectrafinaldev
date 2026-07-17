@@ -75,10 +75,10 @@ function ArrowUpRightIcon() {
 
 export default function RelatedServicesSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full flex-col items-start justify-start self-stretch">
         <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
-          <div className="flex w-[780px] max-w-[780px] flex-col items-start justify-start">
+          <div className="flex w-full max-w-[780px] flex-col items-start justify-start">
             <div className="relative h-6 w-full self-stretch">
               <div className="absolute left-0 top-[9px] inline-flex items-center justify-center gap-3">
                 <div className="relative h-4 w-3.5">
@@ -96,24 +96,27 @@ export default function RelatedServicesSection() {
             </div>
             <div className="flex w-full flex-col items-start justify-start pt-4">
               <div
-                className={`${funnelDisplay.className} text-5xl font-light leading-[49.68px] text-neutral-900`}
+                className={`${funnelDisplay.className} text-3xl font-light leading-tight text-neutral-900 sm:text-4xl sm:leading-[44px] lg:text-5xl lg:leading-[49.68px]`}
               >
-                <span className="block whitespace-nowrap">Explore Our Digital Marketing</span>
-                <span className="block whitespace-nowrap">Services</span>
+                <span className="hidden lg:block lg:whitespace-nowrap">
+                  Explore Our Digital Marketing
+                </span>
+                <span className="hidden lg:block lg:whitespace-nowrap">Services</span>
+                <span className="lg:hidden">Explore Our Digital Marketing Services</span>
               </div>
             </div>
           </div>
 
-          <div className="flex w-full flex-col items-start justify-start pt-16">
-            <div className="grid w-full grid-cols-3 items-stretch gap-4">
+          <div className="flex w-full flex-col items-start justify-start pt-10 lg:pt-16">
+            <div className="grid w-full grid-cols-1 items-stretch gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {RELATED_SERVICES.map((service) => (
                 <div
                   key={service.title}
-                  className="flex h-44 w-full flex-col items-start justify-start rounded-2xl bg-white p-6 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200"
+                  className="flex min-h-44 w-full flex-col items-start justify-start rounded-2xl bg-white p-6 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200"
                 >
-                  <div className="inline-flex h-9 w-full items-center justify-between gap-2 pb-2">
+                  <div className="inline-flex h-auto min-h-9 w-full items-start justify-between gap-2 pb-2 sm:items-center">
                     <div
-                      className={`${funnelDisplay.className} min-w-0 whitespace-nowrap text-lg font-light leading-7 text-neutral-900`}
+                      className={`${funnelDisplay.className} min-w-0 whitespace-normal text-lg font-light leading-7 text-neutral-900`}
                     >
                       {service.title}
                     </div>
@@ -121,11 +124,14 @@ export default function RelatedServicesSection() {
                   </div>
                   <div className="flex w-full flex-col items-start justify-start">
                     <div className="w-full text-sm font-normal leading-5 text-neutral-600 font-['Aspekta']">
-                      {service.descriptionLines.map((line) => (
-                        <span key={line} className="block whitespace-nowrap">
-                          {line}
-                        </span>
-                      ))}
+                      <span className="lg:hidden">{service.descriptionLines.join(" ")}</span>
+                      <span className="hidden lg:contents">
+                        {service.descriptionLines.map((line) => (
+                          <span key={line} className="block whitespace-nowrap">
+                            {line}
+                          </span>
+                        ))}
+                      </span>
                     </div>
                   </div>
                 </div>

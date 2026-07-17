@@ -90,7 +90,7 @@ function CheckIcon() {
 
 export default function WhyChooseTectraSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-white px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-white px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
         <div className="flex w-full flex-col items-start justify-start">
           <div className="relative h-6 self-stretch">
@@ -110,7 +110,7 @@ export default function WhyChooseTectraSection() {
           </div>
           <div className="flex flex-col items-start justify-start pt-4">
             <div
-              className={`${funnelDisplay.className} whitespace-nowrap text-5xl font-light leading-[49.68px] text-neutral-900`}
+              className={`${funnelDisplay.className} whitespace-normal text-3xl font-light leading-tight text-neutral-900 sm:text-4xl xl:text-5xl xl:leading-[49.68px] xl:whitespace-nowrap`}
             >
               What Makes Our SaaS SEO Different
             </div>
@@ -119,14 +119,14 @@ export default function WhyChooseTectraSection() {
 
         <div className="flex w-full flex-col items-start justify-start pt-16">
           <div className="flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
-            <div className="grid h-16 w-full grid-cols-2">
-              <div className="inline-flex items-center justify-start gap-2.5 border-b-[0.80px] border-r-[0.80px] border-gray-200 bg-neutral-50 px-7 py-5">
+            <div className="grid w-full grid-cols-1 lg:grid-cols-2">
+              <div className="inline-flex items-center justify-start gap-2.5 border-b-[0.80px] border-gray-200 bg-neutral-50 px-5 py-5 lg:border-r-[0.80px] lg:px-7">
                 <TypicalHeaderIcon />
                 <div className="text-sm leading-5 tracking-wide text-neutral-500 font-['Aspekta']">
                   Typical SEO agency
                 </div>
               </div>
-              <div className="inline-flex items-center justify-start gap-2.5 border-b-[0.80px] border-neutral-950 bg-neutral-950 px-7 py-5">
+              <div className="inline-flex items-center justify-start gap-2.5 border-b-[0.80px] border-neutral-950 bg-neutral-950 px-5 py-5 lg:px-7">
                 <TectraHeaderIcon />
                 <div className="text-sm leading-5 tracking-wide text-white font-['Aspekta']">
                   The Tectra approach
@@ -139,11 +139,11 @@ export default function WhyChooseTectraSection() {
               return (
                 <div
                   key={row.title}
-                  className={`grid w-full grid-cols-2 items-stretch ${
+                  className={`grid w-full grid-cols-1 items-stretch lg:grid-cols-2 ${
                     isLast ? "" : "border-b-[0.80px] border-gray-200"
                   }`}
                 >
-                  <div className="inline-flex items-start justify-start gap-2 border-r-[0.80px] border-gray-200 bg-neutral-50 px-7 py-6">
+                  <div className="inline-flex w-full min-w-0 items-start justify-start gap-2 border-b-[0.80px] border-gray-200 bg-neutral-50 px-5 py-6 lg:border-b-0 lg:border-r-[0.80px] lg:px-7">
                     <div className="inline-flex size-4 shrink-0 flex-col items-start justify-start pt-0.5">
                       <CrossIcon />
                     </div>
@@ -151,7 +151,7 @@ export default function WhyChooseTectraSection() {
                       {row.typical}
                     </div>
                   </div>
-                  <div className="inline-flex min-w-0 flex-col items-start justify-start bg-white px-7 py-6">
+                  <div className="inline-flex w-full min-w-0 flex-col items-start justify-start bg-white px-5 py-6 lg:px-7">
                     <div className="inline-flex h-6 w-full items-center justify-start gap-2">
                       <CheckIcon />
                       <div className="min-w-0 text-base leading-6 text-neutral-900 font-['Aspekta']">

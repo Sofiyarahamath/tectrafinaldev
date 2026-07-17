@@ -32,26 +32,16 @@ const CONTACT_EMAILS = [
   "support@tectratechnologies.com",
 ] as const;
 
-const DESCRIPTION_LINES = [
-  "Software development company building",
-  "digital products for businesses in the USA",
-  "and India since 2015.",
-] as const;
+const CERTIFICATIONS = ["ISO 27001", "ISO 9001", "Snowflake", "Clutch"] as const;
 
 function NavLink({ label, isFirst = false }: { label: string; isFirst?: boolean }) {
-  if (isFirst) {
-    return (
-      <div className="flex w-full flex-col items-start justify-start">
-        <div className="whitespace-nowrap text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
-          {label}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex h-8 w-full flex-col items-start justify-start pt-3">
-      <div className="whitespace-nowrap text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+    <div
+      className={`flex w-full min-w-0 flex-col items-start justify-start ${
+        isFirst ? "" : "pt-3"
+      }`}
+    >
+      <div className="w-full text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
         {label}
       </div>
     </div>
@@ -60,60 +50,43 @@ function NavLink({ label, isFirst = false }: { label: string; isFirst?: boolean 
 
 export default function FooterSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-color-neutral-900 px-[160px] py-24">
-      <div className="relative h-72 w-full max-w-[1240px] self-stretch">
-        <div className="absolute left-[4.50px] top-0 inline-flex w-[1109px] items-start justify-between">
-          <div className="inline-flex h-72 w-64 flex-col items-start justify-between">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-color-neutral-900 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
+      <div className="w-full max-w-[1240px] self-stretch">
+        <div className="grid w-full grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,16rem)_repeat(4,minmax(0,1fr))] lg:gap-x-8 lg:gap-y-10">
+          <div className="flex min-w-0 flex-col items-start justify-start gap-6 sm:col-span-2 lg:col-span-1">
             <Image
               src="/tectra-logo-footer.png"
               alt="Tectra Technologies"
               width={251}
               height={44}
-              className="h-11 w-64 object-contain object-left"
+              className="h-11 w-full max-w-64 object-contain object-left"
             />
 
-            <div className="flex w-full flex-col items-start justify-start pt-4">
-              <div className="w-64 text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
-                {DESCRIPTION_LINES.map((line) => (
-                  <span key={line} className="block whitespace-nowrap">
-                    {line}
-                  </span>
-                ))}
-              </div>
+            <div className="w-full max-w-64 text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+              Software development company building digital products for businesses in
+              the USA and India since 2015.
             </div>
 
-            <div className="flex w-full flex-col items-start justify-start pt-6">
-              <div className="relative h-14 w-full">
-                <div className="absolute left-0 top-0 h-6 w-20 rounded-[100px] outline outline-[0.80px] outline-offset-[-0.80px] outline-color-neutral-800">
-                  <div className="absolute left-[10.80px] top-[4.60px] text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                    ISO 27001
+            <div className="flex w-full max-w-64 flex-wrap items-center gap-2">
+              {CERTIFICATIONS.map((cert) => (
+                <div
+                  key={cert}
+                  className="flex h-6 items-center rounded-[100px] px-3 outline outline-[0.80px] outline-offset-[-0.80px] outline-color-neutral-800"
+                >
+                  <div className="text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
+                    {cert}
                   </div>
                 </div>
-                <div className="absolute left-[84.65px] top-0 h-6 w-16 rounded-[100px] outline outline-[0.80px] outline-offset-[-0.80px] outline-color-neutral-800">
-                  <div className="absolute left-[10.80px] top-[4.60px] text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                    ISO 9001
-                  </div>
-                </div>
-                <div className="absolute left-[163.10px] top-0 h-6 w-24 rounded-[100px] outline outline-[0.80px] outline-offset-[-0.80px] outline-color-neutral-800">
-                  <div className="absolute left-[10.80px] top-[4.60px] text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                    Snowflake
-                  </div>
-                </div>
-                <div className="absolute left-0 top-[32.60px] h-6 w-16 rounded-[100px] outline outline-[0.80px] outline-offset-[-0.80px] outline-color-neutral-800">
-                  <div className="absolute left-[10.80px] top-[4.60px] text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                    Clutch
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="inline-flex w-full items-center justify-between">
+            <div className="flex w-full max-w-64 flex-wrap items-center gap-3 sm:gap-2">
               {SOCIAL_LINKS.map((social) => (
                 <Link
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}
-                  className="relative size-11 overflow-hidden rounded-full"
+                  className="relative size-11 shrink-0 overflow-hidden rounded-full"
                 >
                   <Image
                     src={social.src}
@@ -127,75 +100,63 @@ export default function FooterSection() {
             </div>
           </div>
 
-          <div className="inline-flex h-64 flex-col items-start justify-start">
-            <div className="flex w-full flex-col items-start justify-start">
-              <div className="whitespace-nowrap text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                Services
-              </div>
+          <div className="flex min-w-0 flex-col items-start justify-start">
+            <div className="text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
+              Services
             </div>
-            <div className="flex h-56 w-40 flex-col items-start justify-start pt-5">
+            <div className="flex w-full flex-col items-start justify-start pt-5">
               {SERVICES.map((item, index) => (
                 <NavLink key={item} label={item} isFirst={index === 0} />
               ))}
             </div>
           </div>
 
-          <div className="inline-flex h-64 flex-col items-start justify-start">
-            <div className="flex w-full flex-col items-start justify-start">
-              <div className="whitespace-nowrap text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                Digital marketing
-              </div>
+          <div className="flex min-w-0 flex-col items-start justify-start">
+            <div className="text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
+              Digital marketing
             </div>
-            <div className="flex h-56 w-52 flex-col items-start justify-start pt-5">
+            <div className="flex w-full flex-col items-start justify-start pt-5">
               {DIGITAL_MARKETING.map((item, index) => (
                 <NavLink key={item} label={item} isFirst={index === 0} />
               ))}
             </div>
           </div>
 
-          <div className="inline-flex flex-col items-start justify-start">
-            <div className="flex w-full flex-col items-start justify-start">
-              <div className="whitespace-nowrap text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                Company
-              </div>
+          <div className="flex min-w-0 flex-col items-start justify-start">
+            <div className="text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
+              Company
             </div>
-            <div className="flex h-40 flex-col items-start justify-start pt-5">
+            <div className="flex w-full flex-col items-start justify-start pt-5">
               {COMPANY.map((item, index) => (
                 <NavLink key={item} label={item} isFirst={index === 0} />
               ))}
             </div>
           </div>
 
-          <div className="inline-flex w-52 flex-col items-start justify-start">
-            <div className="flex w-full flex-col items-start justify-start">
-              <div className="whitespace-nowrap text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
-                Contact
-              </div>
+          <div className="flex min-w-0 flex-col items-start justify-start sm:col-span-2 lg:col-span-1">
+            <div className="text-xs font-medium uppercase leading-4 text-color-neutral-500 font-['Aspekta']">
+              Contact
             </div>
-            <div className="flex h-40 w-64 flex-col items-start justify-start pt-5">
+            <div className="flex w-full flex-col items-start justify-start pt-5">
               {CONTACT_EMAILS.map((email, index) => (
                 <div
                   key={email}
                   className={`flex w-full flex-col items-start justify-start ${
-                    index === 0 ? "" : "h-7 pt-2.5"
+                    index === 0 ? "" : "pt-2.5"
                   }`}
                 >
-                  <div className="whitespace-nowrap text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+                  <div className="break-words text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
                     {email}
                   </div>
                 </div>
               ))}
               <div className="flex w-full flex-col items-start justify-start pt-2.5">
                 <div className="flex w-full flex-col items-start justify-start border-t-[0.80px] border-color-neutral-700 pt-4">
-                  <div className="flex w-full flex-col items-start justify-start">
-                    <div className="whitespace-nowrap text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
-                      Chennai · Tamil Nadu · India
-                    </div>
+                  <div className="text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+                    Chennai · Tamil Nadu · India
                   </div>
-                  <div className="flex w-full flex-col items-start justify-start">
-                    <div className="whitespace-nowrap text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
-                      USA — Nearshore Delivery
-                    </div>
+                  <div className="text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+                    USA — Nearshore Delivery
                   </div>
                 </div>
               </div>
@@ -204,28 +165,20 @@ export default function FooterSection() {
         </div>
       </div>
 
-      <div className="flex w-[1079px] flex-col items-center justify-start pt-16">
-        <div className="inline-flex w-full items-center justify-between border-t-[0.80px] border-color-neutral-700 pt-8">
-          <div className="relative h-4 w-48">
-            <div className="absolute left-0 top-0 whitespace-nowrap text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
-              © 2026 Tectra Technologies LLC
-            </div>
+      <div className="flex w-full max-w-[1240px] flex-col items-center justify-start pt-10 lg:pt-16">
+        <div className="flex w-full flex-col items-start justify-between gap-4 border-t-[0.80px] border-color-neutral-700 pt-8 sm:flex-row sm:items-center">
+          <div className="text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
+            © 2026 Tectra Technologies LLC
           </div>
-          <div className="flex items-start justify-start gap-6">
-            <div className="relative h-4 w-10">
-              <div className="absolute left-0 top-0 text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
-                Privacy
-              </div>
+          <div className="flex flex-wrap items-start justify-start gap-4 sm:gap-6">
+            <div className="text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
+              Privacy
             </div>
-            <div className="relative h-4 w-9">
-              <div className="absolute left-0 top-0 text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
-                Terms
-              </div>
+            <div className="text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
+              Terms
             </div>
-            <div className="relative h-4 w-12">
-              <div className="absolute left-0 top-0 text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
-                Sitemap
-              </div>
+            <div className="text-xs font-normal leading-4 text-color-neutral-500 font-['Aspekta']">
+              Sitemap
             </div>
           </div>
         </div>

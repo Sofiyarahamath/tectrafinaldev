@@ -229,21 +229,27 @@ function TagPill({ label }: { label: string }) {
 function IndustryCardItem({ card }: { card: IndustryCard }) {
   return (
     <div className="flex h-full w-full flex-col items-start justify-start rounded-2xl bg-white p-8 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
-      <div className="inline-flex w-80 items-start justify-start gap-3.5 pb-4">
+      <div className="inline-flex w-full max-w-80 items-start justify-start gap-3.5 pb-4">
         <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-neutral-50 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200 shadow-[inset_-2.4035820960998535px_5.608357906341553px_26.439401626586914px_0px_rgba(0,0,0,0.08),inset_-2.4035820960998535px_5.608357906341553px_9px_0px_rgba(0,0,0,0.08)]">
           <IndustryIcon type={card.icon} />
         </div>
-        <div className={`${funnelDisplay.className} text-lg font-light leading-7 text-neutral-900`}>
-          {card.titleLines.map((line) => (
-            <span key={line} className="block whitespace-nowrap">
-              {line}
-            </span>
-          ))}
+        <div className={`${funnelDisplay.className} min-w-0 flex-1 text-lg font-light leading-7 text-neutral-900`}>
+          <span className="lg:hidden">{card.title}</span>
+          <span className="hidden lg:block">
+            {card.titleLines.map((line) => (
+              <span key={line} className="block whitespace-nowrap">
+                {line}
+              </span>
+            ))}
+          </span>
         </div>
       </div>
 
       <div className="flex flex-1 flex-col items-start justify-start self-stretch">
-        <div className="w-80 text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
+        <div className="w-full max-w-80 text-sm font-normal leading-6 text-neutral-600 font-['Aspekta'] lg:hidden">
+          {card.descriptionLines.join(" ")}
+        </div>
+        <div className="hidden w-full max-w-80 text-sm font-normal leading-6 text-neutral-600 font-['Aspekta'] lg:block">
           {card.descriptionLines.map((line, index) => (
             <span key={`${card.title}-d-${index}`} className="block whitespace-nowrap">
               {line}
@@ -252,7 +258,7 @@ function IndustryCardItem({ card }: { card: IndustryCard }) {
         </div>
       </div>
 
-      <div className={`flex w-80 flex-col justify-center gap-2 ${card.tagAreaHeight}`}>
+      <div className={`flex w-full max-w-80 flex-col justify-center gap-2 max-lg:h-auto ${card.tagAreaHeight}`}>
         {card.tagRows.map((row, rowIndex) => (
           <div key={`${card.title}-row-${rowIndex}`} className="flex flex-wrap gap-2">
             {row.map((tag) => (
@@ -278,7 +284,7 @@ function IndustryCardItem({ card }: { card: IndustryCard }) {
 
 export default function IndustriesSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
         <div className="flex w-full flex-col items-start justify-start">
           <div className="relative h-6 self-stretch">
@@ -298,13 +304,16 @@ export default function IndustriesSection() {
           </div>
           <div className="flex flex-col items-start justify-start pt-4">
             <div
-              className={`${funnelDisplay.className} whitespace-nowrap text-5xl font-light leading-[49.68px] text-neutral-900`}
+              className={`${funnelDisplay.className} whitespace-normal text-3xl font-light leading-tight text-neutral-900 sm:text-4xl xl:text-5xl xl:leading-[49.68px] xl:whitespace-nowrap`}
             >
               SaaS SEO for All Key SaaS Industries
             </div>
           </div>
           <div className="flex flex-col items-start justify-start pt-4">
-            <div className="text-lg font-normal leading-7 text-neutral-600 font-['Aspekta']">
+            <div className="text-lg font-normal leading-7 text-neutral-600 font-['Aspekta'] lg:hidden">
+              The best SaaS SEO agency with SEO strategies personalised to the unique buyer journeys, search behaviours, and competitive dynamics of different SaaS industries.
+            </div>
+            <div className="hidden text-lg font-normal leading-7 text-neutral-600 font-['Aspekta'] lg:block">
               <span className="block whitespace-nowrap">
                 The best SaaS SEO agency with SEO strategies personalised to the unique
               </span>
@@ -317,7 +326,7 @@ export default function IndustriesSection() {
         </div>
 
         <div className="flex w-full flex-col items-start justify-start pt-16">
-          <div className="grid w-full grid-cols-3 items-stretch gap-4">
+          <div className="grid w-full grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
             {INDUSTRY_CARDS.map((card) => (
               <IndustryCardItem key={card.title} card={card} />
             ))}

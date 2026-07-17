@@ -64,10 +64,10 @@ const CASE_STUDIES = [
 
 export default function CaseStudiesSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
         <div className="flex w-full flex-col items-start justify-start self-stretch">
-          <div className="flex w-[780px] max-w-[780px] flex-col items-start justify-start">
+          <div className="flex w-full max-w-[780px] flex-col items-start justify-start">
             <div className="relative h-6 self-stretch">
               <div className="absolute left-[-0.01px] top-[9px] inline-flex items-center justify-center gap-3">
                 <div className="relative h-4 w-3.5">
@@ -85,7 +85,7 @@ export default function CaseStudiesSection() {
             </div>
             <div className="flex self-stretch flex-col items-start justify-start pt-4">
               <div
-                className={`${funnelDisplay.className} w-[780px] text-5xl font-light leading-[49.68px] text-neutral-900`}
+                className={`${funnelDisplay.className} w-full max-w-[780px] whitespace-normal text-3xl font-light leading-tight text-neutral-900 sm:text-4xl xl:text-5xl xl:leading-[49.68px]`}
               >
                 Results We&apos;ve Delivered for Our Clients
               </div>
@@ -94,11 +94,11 @@ export default function CaseStudiesSection() {
         </div>
 
         <div className="flex w-full flex-col items-start justify-start pt-16">
-          <div className="inline-flex w-full items-stretch justify-start gap-4">
+          <div className="grid w-full grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
             {CASE_STUDIES.map((study) => (
               <div
                 key={study.title}
-                className="inline-flex min-w-0 flex-1 flex-col items-start justify-start"
+                className="inline-flex min-w-0 w-full flex-col items-start justify-start"
               >
                 <div className="flex w-full flex-1 flex-col items-start justify-start overflow-hidden rounded-2xl bg-white outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
                   <div className="relative h-28 w-full shrink-0 overflow-hidden border-b-[0.80px] border-gray-200">
@@ -120,7 +120,10 @@ export default function CaseStudiesSection() {
                       </div>
                     </div>
                     <div className="flex w-full min-w-0 flex-1 flex-col items-start justify-start pt-3">
-                      <div className="w-full text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
+                      <div className="w-full text-sm font-normal leading-6 text-neutral-600 font-['Aspekta'] lg:hidden">
+                        {study.descriptionLines.join(" ")}
+                      </div>
+                      <div className="hidden w-full text-sm font-normal leading-6 text-neutral-600 font-['Aspekta'] lg:block">
                         {study.descriptionLines.map((line) => (
                           <span key={line} className="block whitespace-nowrap">
                             {line}

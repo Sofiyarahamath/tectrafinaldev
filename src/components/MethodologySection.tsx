@@ -146,11 +146,11 @@ function PhaseIcon({ icon }: { icon: (typeof PHASES)[number]["icon"] }) {
 
 export default function MethodologySection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start overflow-hidden bg-neutral-950 px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start overflow-hidden bg-neutral-950 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full flex-col items-start justify-start">
         <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
           <div className="flex self-stretch flex-col items-start justify-start">
-            <div className="flex w-[780px] max-w-[780px] flex-col items-start justify-start">
+            <div className="flex w-full max-w-[780px] flex-col items-start justify-start">
               <div className="relative h-6 self-stretch">
                 <div className="absolute left-0 top-[9px] inline-flex items-center justify-center gap-3">
                   <div className="relative h-4 w-3.5">
@@ -168,15 +168,16 @@ export default function MethodologySection() {
               </div>
               <div className="flex self-stretch flex-col items-start justify-start pt-4">
                 <div
-                  className={`${funnelDisplay.className} w-[780px] text-5xl font-light leading-[49.68px] text-white`}
+                  className={`${funnelDisplay.className} w-full max-w-[780px] whitespace-normal text-3xl font-light leading-tight text-white sm:text-4xl xl:text-5xl xl:leading-[49.68px]`}
                 >
                   How We Build SaaS SEO Campaigns
-                  <br />
+                  <br className="hidden xl:inline" />
+                  <span className="xl:hidden"> </span>
                   That Drive Consistent ARR
                 </div>
               </div>
               <div className="flex flex-col items-start justify-start pt-4">
-                <div className="w-[639px] text-lg font-normal leading-7 text-stone-300 font-['Aspekta']">
+                <div className="w-full max-w-[639px] text-lg font-normal leading-7 text-stone-300 font-['Aspekta']">
                   A strategic 4-phase SaaS SEO framework built to attract high-intent buyers,
                   generate a qualified pipeline, and gain sustainable ARR growth.
                 </div>
@@ -185,29 +186,32 @@ export default function MethodologySection() {
           </div>
 
           <div className="flex self-stretch flex-col items-start justify-start pt-16">
-            <div className="inline-flex w-full items-start justify-between">
+            <div className="flex w-full flex-col items-start justify-start gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-4">
               {PHASES.map((item) => (
-                <div key={item.phase} className="inline-flex w-64 flex-col items-start justify-start">
+                <div key={item.phase} className="inline-flex w-full min-w-0 flex-col items-start justify-start lg:w-64 lg:shrink-0">
                   <div className="flex self-stretch flex-col items-start justify-start">
                     <PhaseIcon icon={item.icon} />
-                    <div className="flex h-10 w-64 flex-col items-start justify-start pt-6">
+                    <div className="flex h-10 w-full flex-col items-start justify-start pt-6 lg:w-64">
                       <div className="text-xs uppercase leading-4 tracking-widest text-green-300 font-['Aspekta']">
                         {item.phase}
                       </div>
                     </div>
-                    <div className="flex min-h-16 w-64 flex-col items-start justify-start pt-2">
+                    <div className="flex min-h-16 w-full flex-col items-start justify-start pt-2 lg:w-64">
                       <div
                         className={`${funnelDisplay.className} text-xl font-light leading-8 text-white`}
                       >
                         {item.titleLines.map((line) => (
-                          <span key={line} className="block whitespace-nowrap">
+                          <span key={line} className="block lg:whitespace-nowrap">
                             {line}
                           </span>
                         ))}
                       </div>
                     </div>
                     <div className="flex self-stretch flex-col items-start justify-start pt-3">
-                      <div className="w-64 text-sm font-normal leading-6 text-neutral-400 font-['Aspekta']">
+                      <div className="w-full text-sm font-normal leading-6 text-neutral-400 font-['Aspekta'] lg:hidden">
+                        {item.descriptionLines.join(" ")}
+                      </div>
+                      <div className="hidden w-full text-sm font-normal leading-6 text-neutral-400 font-['Aspekta'] lg:block lg:w-64">
                         {item.descriptionLines.map((line) => (
                           <span key={line} className="block whitespace-nowrap">
                             {line}

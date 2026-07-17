@@ -66,7 +66,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <div className="inline-flex w-full flex-col items-center justify-start bg-white px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-center justify-start bg-white px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full max-w-[1240px] flex-col items-start justify-start">
         <div className="flex w-full flex-col items-center justify-start self-stretch">
           <div className="inline-flex items-center justify-center gap-3">
@@ -82,10 +82,10 @@ export default function FAQSection() {
               —
             </div>
           </div>
-          <div className="flex w-[780px] max-w-[780px] flex-col items-start justify-start">
-            <div className="flex h-16 w-[780px] flex-col items-center justify-start pt-4">
+          <div className="flex w-full max-w-[780px] flex-col items-start justify-start">
+            <div className="flex w-full flex-col items-center justify-start pt-4 lg:h-16">
               <div
-                className={`${funnelDisplay.className} text-center text-5xl font-light leading-[49.68px] text-neutral-900`}
+                className={`${funnelDisplay.className} text-center text-3xl font-light leading-tight text-neutral-900 sm:text-4xl sm:leading-[44px] lg:text-5xl lg:leading-[49.68px]`}
               >
                 SaaS SEO Questions, Answered
               </div>
@@ -93,26 +93,28 @@ export default function FAQSection() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-center justify-start pt-16">
-          <div className="flex w-[820px] max-w-[820px] flex-col items-start justify-start">
+        <div className="flex w-full flex-col items-center justify-start pt-10 lg:pt-16">
+          <div className="flex w-full max-w-[820px] flex-col items-start justify-start">
             {FAQ_ITEMS.map((item, index) => {
               const isOpen = openIndex === index;
               return (
                 <div
                   key={item.question}
-                  className={index === 0 ? "" : "flex w-full flex-col items-start justify-start pt-3"}
+                  className={`flex w-full flex-col items-start justify-start ${
+                    index === 0 ? "" : "pt-3"
+                  }`}
                 >
                   <div
-                    className={`flex w-[820px] flex-col items-start justify-start overflow-hidden rounded-2xl bg-white outline outline-[0.80px] outline-offset-[-0.80px] ${
+                    className={`flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white outline outline-[0.80px] outline-offset-[-0.80px] ${
                       isOpen ? "outline-zinc-300" : "outline-gray-200"
                     }`}
                   >
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className="inline-flex w-full items-center justify-between px-6 py-5 text-left"
+                      className="inline-flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
                     >
-                      <div className="text-base leading-6 text-neutral-900 font-['Aspekta']">
+                      <div className="min-w-0 text-sm leading-6 text-neutral-900 sm:text-base font-['Aspekta']">
                         {item.question}
                       </div>
                       {isOpen ? (
@@ -126,7 +128,7 @@ export default function FAQSection() {
                       )}
                     </button>
                     {isOpen ? (
-                      <div className="flex w-full flex-col items-start justify-start px-6 pb-6">
+                      <div className="flex w-full flex-col items-start justify-start px-4 pb-5 sm:px-6 sm:pb-6">
                         <div className="w-full max-w-[771px] text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
                           {item.answer}
                         </div>

@@ -54,6 +54,7 @@ const SERVICE_CARDS: ServiceCard[] = [
       "Grow without sacrificing user experience.",
     ],
     tags: ["Use-Case Pages", "Integration Pages", "Template SEO"],
+    tallTitle: true,
   },
   {
     title: "Bottom-of-Funnel SaaS Content",
@@ -144,30 +145,32 @@ function ServiceIcon({ src, alt }: { src: string; alt: string }) {
 
 function ServiceCardItem({ card }: { card: ServiceCard }) {
   return (
-    <div className="inline-flex h-[513px] w-full flex-col items-start justify-start">
+    <div className="inline-flex h-auto w-full flex-col items-start justify-start xl:h-[513px]">
       <div className="flex h-full w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white p-8 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
         <div className="flex flex-col items-start justify-start pb-6">
           <ServiceIcon src={card.icon} alt={card.title} />
         </div>
         <div
-          className={`flex w-80 flex-col items-start justify-start pb-3 ${card.tallTitle ? "h-20" : "h-12"}`}
+          className={`flex w-full max-w-80 shrink-0 flex-col items-start justify-start pb-3 ${
+            card.tallTitle ? "xl:min-h-20" : "xl:min-h-12"
+          }`}
         >
           <div
-            className={`${funnelDisplay.className} w-80 text-2xl font-light leading-9 text-neutral-900`}
+            className={`${funnelDisplay.className} w-full max-w-80 text-2xl font-light leading-9 text-neutral-900`}
           >
             {card.title}
           </div>
         </div>
-        <div className="flex flex-1 flex-col items-start justify-between self-stretch">
+        <div className="flex min-h-0 flex-1 flex-col items-start justify-between self-stretch">
           <div className="flex flex-col items-start justify-start gap-6">
-            <div className="w-80 text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
+            <div className="w-full max-w-80 text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
               {card.description}
             </div>
             <div className="flex flex-col items-start justify-start gap-3.5">
               {card.bullets.map((bullet) => (
                 <div
                   key={bullet}
-                  className="w-80 text-xs font-normal text-color-neutral-700 font-['Aspekta']"
+                  className="w-full max-w-80 text-xs font-normal text-color-neutral-700 font-['Aspekta']"
                 >
                   {bullet}
                 </div>
@@ -194,7 +197,7 @@ function ServiceCardItem({ card }: { card: ServiceCard }) {
 
 export default function ServicesOfferings() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start px-[160px] py-24 bg-neutral-50">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full max-w-[1240px] flex-col items-start justify-start self-stretch">
         <div className="flex w-full flex-col items-start justify-start self-stretch">
           <div className="flex w-full max-w-[780px] flex-col items-start justify-start">
@@ -215,7 +218,7 @@ export default function ServicesOfferings() {
             </div>
             <div className="flex flex-col items-start justify-start self-stretch pt-4">
               <div
-                className={`${funnelDisplay.className} w-full max-w-[780px] text-5xl font-light leading-[49.68px] text-neutral-900`}
+                className={`${funnelDisplay.className} w-full max-w-[780px] whitespace-normal text-3xl font-light leading-tight text-neutral-900 sm:text-4xl xl:text-5xl xl:leading-[49.68px]`}
               >
                 Full-Funnel SaaS SEO Services for India & USA
               </div>
@@ -231,14 +234,14 @@ export default function ServicesOfferings() {
         </div>
 
         <div className="flex w-full max-w-[1160px] flex-col items-start justify-start pt-16">
-          <div className="grid w-full grid-cols-3 gap-4">
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {SERVICE_CARDS.map((card) => (
               <ServiceCardItem key={card.title} card={card} />
             ))}
           </div>
         </div>
 
-        <div className="inline-flex h-24 w-full max-w-[1160px] items-start justify-center pt-12">
+        <div className="inline-flex w-full max-w-[1160px] items-start justify-center pt-12">
           <button
             type="button"
             className="inline-flex h-14 items-center justify-start gap-2 rounded-full bg-neutral-950 px-8 py-4"

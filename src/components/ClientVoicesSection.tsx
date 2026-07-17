@@ -144,16 +144,17 @@ export default function ClientVoicesSection() {
   };
 
   return (
-    <div className="relative inline-flex w-full flex-col items-center justify-start gap-12 overflow-hidden bg-white px-[160px] py-24">
+    <div className="relative inline-flex w-full flex-col items-center justify-start gap-8 overflow-hidden bg-white px-5 py-16 sm:gap-10 sm:px-8 md:px-12 lg:gap-12 lg:px-16 xl:px-[160px] xl:py-24">
+      {/* Soft gradient wash behind the quote — visible, softer than text */}
       <div
-        className="pointer-events-none absolute left-[621px] top-[206px] h-72 w-48 opacity-80 blur-[50px]"
+        className="pointer-events-none absolute left-1/2 top-[42%] hidden h-64 w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-[60px] xl:block"
         style={{
           background: "linear-gradient(160deg, #BFE3E0 0%, #F4D6E6 45%, #F7E6C0 100%)",
         }}
         aria-hidden
       />
 
-      <div className="inline-flex w-full items-center justify-center self-stretch">
+      <div className="relative z-10 inline-flex w-full items-center justify-center self-stretch">
         <div className="inline-flex flex-col items-center justify-start">
           <div className="inline-flex items-start justify-center gap-3">
             <div className="relative h-4 w-3.5">
@@ -170,42 +171,48 @@ export default function ClientVoicesSection() {
           </div>
           <div className="flex flex-col items-center justify-start pt-5">
             <div
-              className={`${funnelDisplay.className} w-96 text-center text-5xl font-light leading-[54px] text-neutral-900`}
+              className={`${funnelDisplay.className} w-full max-w-sm text-center text-3xl font-light leading-tight text-neutral-900 sm:text-4xl sm:leading-[49px] lg:max-w-none lg:text-5xl lg:leading-[54px]`}
             >
-              <span className="block whitespace-nowrap">What Our SaaS SEO</span>
-              <span className="block whitespace-nowrap">Clients Say</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">What Our SaaS SEO</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">Clients Say</span>
+              <span className="lg:hidden">What Our SaaS SEO Clients Say</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex w-[704px] flex-col items-center justify-center gap-3">
-        <div
-          className={`${funnelDisplay.className} w-full text-center text-lg font-light leading-6`}
-        >
-          {active.quoteLines.map((line, lineIndex) => (
-            <span key={`${active.name}-line-${lineIndex}`} className="block whitespace-nowrap">
-              {line.type === "text" ? (
-                <span className="text-neutral-600">{line.text}</span>
-              ) : (
-                line.parts.map((part, partIndex) => (
-                  <span
-                    key={`${active.name}-line-${lineIndex}-${partIndex}`}
-                    className={
-                      part.highlight
-                        ? "font-normal text-color-primary-main"
-                        : "font-light text-neutral-600"
-                    }
-                  >
-                    {part.text}
-                  </span>
-                ))
-              )}
-            </span>
-          ))}
+      <div className="relative z-10 flex w-full max-w-3xl flex-col items-center lg:h-[360px]">
+        <div className="relative flex w-full flex-1 flex-col items-center justify-start">
+          <div
+            className={`${funnelDisplay.className} relative z-10 w-full text-center text-base font-light leading-6 sm:text-lg`}
+          >
+            {active.quoteLines.map((line, lineIndex) => (
+              <span
+                key={`${active.name}-line-${lineIndex}`}
+                className="block lg:whitespace-nowrap"
+              >
+                {line.type === "text" ? (
+                  <span className="text-neutral-900">{line.text}</span>
+                ) : (
+                  line.parts.map((part, partIndex) => (
+                    <span
+                      key={`${active.name}-line-${lineIndex}-${partIndex}`}
+                      className={
+                        part.highlight
+                          ? "font-normal text-neutral-950"
+                          : "font-light text-neutral-900"
+                      }
+                    >
+                      {part.text}
+                    </span>
+                  ))
+                )}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="inline-flex items-center justify-center gap-3 py-6">
+        <div className="flex w-full shrink-0 flex-col items-center justify-center gap-4 py-6 sm:flex-row sm:gap-3">
           <Image
             src={active.avatar}
             alt={active.name}
@@ -213,16 +220,16 @@ export default function ClientVoicesSection() {
             height={56}
             className="size-14 shrink-0 rounded-full object-cover outline outline-1 outline-neutral-300"
           />
-          <div className="inline-flex h-20 w-80 flex-col items-start justify-between">
-            <div className="flex flex-col items-start justify-start">
-              <div className="text-sm font-normal leading-5 text-color-neutral-950 font-['Aspekta']">
+          <div className="inline-flex min-w-0 flex-col items-center justify-between gap-2 sm:h-20 sm:w-80 sm:items-start">
+            <div className="flex flex-col items-center justify-start sm:items-start">
+              <div className="text-center text-sm font-normal leading-5 text-color-neutral-950 sm:text-left font-['Aspekta']">
                 {active.name}
               </div>
-              <div className="text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+              <div className="text-center text-sm font-normal leading-5 text-color-neutral-500 sm:text-left font-['Aspekta']">
                 {active.role}
               </div>
             </div>
-            <div className="text-sm font-normal leading-5 text-color-neutral-500 font-['Aspekta']">
+            <div className="text-center text-sm font-normal leading-5 text-color-neutral-500 sm:text-left font-['Aspekta']">
               {active.company}
             </div>
           </div>
@@ -231,12 +238,12 @@ export default function ClientVoicesSection() {
             alt="La Chos Italian Fashion"
             width={96}
             height={80}
-            className="h-20 w-24 shrink-0 object-contain"
+            className="h-16 w-20 shrink-0 object-contain sm:h-20 sm:w-24"
           />
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-6">
+      <div className="relative z-10 flex shrink-0 flex-col items-center justify-center gap-6">
         <div className="inline-flex items-start justify-start gap-2">
           {TESTIMONIALS.map((_, index) => (
             <button

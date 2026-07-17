@@ -66,11 +66,11 @@ function ShieldIcon() {
 
 export default function EEATSection() {
   return (
-    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-[160px] py-24">
+    <div className="inline-flex w-full flex-col items-start justify-start bg-neutral-50 px-5 py-16 sm:px-8 md:px-12 lg:px-16 xl:px-[160px] xl:py-24">
       <div className="flex w-full flex-col items-start justify-start self-stretch">
-        <div className="inline-flex w-full max-w-[1240px] items-start justify-start gap-16 self-stretch">
-          <div className="inline-flex w-[548px] shrink-0 flex-col items-start justify-start gap-6">
-            <div className="flex w-[548px] flex-col items-start justify-start gap-3">
+        <div className="flex w-full max-w-[1240px] flex-col items-start justify-start gap-12 self-stretch lg:flex-row lg:gap-16">
+          <div className="inline-flex w-full max-w-[548px] shrink-0 flex-col items-start justify-start gap-6">
+            <div className="flex w-full max-w-[548px] flex-col items-start justify-start gap-3">
               <div className="relative h-6 self-stretch">
                 <div className="absolute left-0 top-[8px] inline-flex items-center justify-center gap-3">
                   <div className="relative h-4 w-3.5">
@@ -88,14 +88,17 @@ export default function EEATSection() {
               </div>
               <div className="flex self-stretch flex-col items-start justify-start pt-4">
                 <div
-                  className={`${funnelDisplay.className} w-[548px] text-5xl font-light leading-[49.68px] text-neutral-900`}
+                  className={`${funnelDisplay.className} w-full max-w-[548px] whitespace-normal text-3xl font-light leading-tight text-neutral-900 sm:text-4xl xl:text-5xl xl:leading-[49.68px]`}
                 >
-                  <span className="block whitespace-nowrap">Our SaaS SEO Is Built on</span>
-                  <span className="block whitespace-nowrap">E-E-A-T Principles</span>
+                  <span className="block xl:whitespace-nowrap">Our SaaS SEO Is Built on</span>
+                  <span className="block xl:whitespace-nowrap">E-E-A-T Principles</span>
                 </div>
               </div>
               <div className="flex w-full max-w-[638.40px] flex-col items-start justify-start pt-4">
-                <div className="w-[548px] text-lg font-normal leading-7 text-neutral-600 font-['Aspekta']">
+                <div className="w-full max-w-[548px] text-lg font-normal leading-7 text-neutral-600 font-['Aspekta'] lg:hidden">
+                  {INTRO_LINES.join(" ")}
+                </div>
+                <div className="hidden w-full max-w-[548px] text-lg font-normal leading-7 text-neutral-600 font-['Aspekta'] lg:block">
                   {INTRO_LINES.map((line) => (
                     <span key={line} className="block whitespace-nowrap">
                       {line}
@@ -105,7 +108,7 @@ export default function EEATSection() {
               </div>
             </div>
 
-            <div className="inline-flex w-[438px] items-center justify-start gap-6 rounded-3xl bg-white p-6 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
+            <div className="inline-flex w-full max-w-[438px] items-center justify-start gap-6 rounded-3xl bg-white p-6 outline outline-[0.80px] outline-offset-[-0.80px] outline-gray-200">
               <div className="flex min-w-0 flex-1 items-center justify-start gap-3">
                 <Image
                   src="/rakesh-kumar.png"
@@ -114,13 +117,13 @@ export default function EEATSection() {
                   height={64}
                   className="size-16 shrink-0 rounded-full object-cover object-top"
                 />
-                <div className="inline-flex w-44 flex-col items-start justify-start">
+                <div className="inline-flex min-w-0 flex-1 flex-col items-start justify-start">
                   <div className="self-stretch text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
                     Reviewed by{" "}
                   </div>
                   <div className="flex flex-col items-start justify-start pb-3">
                     <div
-                      className={`${funnelDisplay.className} w-40 whitespace-nowrap text-2xl font-light leading-9 text-neutral-900`}
+                      className={`${funnelDisplay.className} w-full text-2xl font-light leading-9 text-neutral-900`}
                     >
                       Rakesh Kumar{" "}
                     </div>
@@ -148,12 +151,12 @@ export default function EEATSection() {
               />
             </div>
 
-            <div className="inline-flex w-[548px] items-center justify-start gap-3.5 overflow-hidden">
-              <div className="w-36 shrink-0 text-lg font-normal leading-7 text-color-neutral-500 font-['Aspekta']">
+            <div className="inline-flex w-full max-w-[548px] flex-wrap items-center justify-start gap-3.5">
+              <div className="w-full shrink-0 text-lg font-normal leading-7 text-color-neutral-500 font-['Aspekta'] sm:w-36">
                 150+ SaaS Brands Served
               </div>
-              <div className="h-12 w-px shrink-0 bg-color-neutral-400" />
-              <div className="relative h-14 min-w-0 flex-1 overflow-hidden">
+              <div className="hidden h-12 w-px shrink-0 bg-color-neutral-400 sm:block" />
+              <div className="relative min-h-14 min-w-0 w-full flex-1 overflow-hidden sm:w-auto">
                 <Image
                   src="/saas-brands-logos-dark.png"
                   alt="SaaS brands served"
@@ -164,8 +167,8 @@ export default function EEATSection() {
               </div>
             </div>
 
-            <div className="relative h-16 w-[548px]">
-              <div className="absolute left-0 top-[23.65px] inline-flex h-10 items-center justify-start gap-2 rounded-full bg-neutral-950 px-4 py-2">
+            <div className="flex w-full max-w-[548px] pt-2">
+              <div className="inline-flex h-10 items-center justify-start gap-2 rounded-full bg-neutral-950 px-4 py-2">
                 <ShieldIcon />
                 <div className="text-xs uppercase leading-4 tracking-wider text-white font-['Aspekta']">
                   Aligned with Google E-E-A-T
@@ -174,7 +177,7 @@ export default function EEATSection() {
             </div>
           </div>
 
-          <div className="grid min-w-0 flex-1 grid-cols-2 items-stretch gap-4">
+          <div className="grid min-w-0 w-full flex-1 grid-cols-1 items-stretch gap-4 md:grid-cols-2">
             {EEAT_CARDS.map((card) => (
               <div
                 key={card.title}
