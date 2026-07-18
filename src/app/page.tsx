@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-color-neutral-0 font-[family-name:var(--font-geist-sans)]">
@@ -10,7 +12,7 @@ export default function Home() {
               <div className="size- flex justify-start items-center gap-6">
                 <div className="size- flex justify-start items-center gap-0.5">
                   <div className="w-14 h-5 px-2 py-1 relative flex justify-start items-center gap-2.5">
-                    <div className="left-[-0.26px] top-[-0.10px] absolute justify-start text-color-neutral-0 text-sm font-normal font-['Aspekta'] leading-5">Services</div>
+                    <Link href="/services" className="left-[-0.26px] top-[-0.10px] absolute justify-start text-color-neutral-0 text-sm font-normal font-['Aspekta'] leading-5">Services</Link>
                   </div>
                   <div className="size-3.5 bg-color-neutral-300" />
                   <div className="w-1.5 h-[2.92px] bg-color-neutral-0" />
