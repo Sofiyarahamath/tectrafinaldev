@@ -2,6 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Stats from "./Stats";
 
+
+
+
+
+
 export default function Hero() {
   return (
     <section className="relative w-full h-[100dvh] md:h-[783px] overflow-hidden select-none shadow-2xl">
