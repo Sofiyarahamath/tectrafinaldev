@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 type HighlightedText = {
   text: string;
@@ -69,6 +69,17 @@ export default function Testimonials() {
   const [isFading, setIsFading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const active = TESTIMONIALS[activeIndex];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setActiveIndex((current) => current === TESTIMONIALS.length - 1 ? 0 : current + 1);
+        setIsFading(false);
+      }, 300);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const triggerSlideChange = (nextIndex: number) => {
     setIsFading(true);

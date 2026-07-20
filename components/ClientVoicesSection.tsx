@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Funnel_Display } from "next/font/google";
 
@@ -132,15 +132,35 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 export default function ClientVoicesSection() {
+  const [isFading, setIsFading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(1);
   const active = TESTIMONIALS[activeIndex];
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setActiveIndex((current) => (current === TESTIMONIALS.length - 1 ? 0 : current + 1));
+        setIsFading(false);
+      }, 300);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const triggerSlideChange = (nextIndex: number) => {
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveIndex(nextIndex);
+      setIsFading(false);
+    }, 300);
+  };
+
   const goPrev = () => {
-    setActiveIndex((current) => (current === 0 ? TESTIMONIALS.length - 1 : current - 1));
+    triggerSlideChange(activeIndex === 0 ? TESTIMONIALS.length - 1 : activeIndex - 1);
   };
 
   const goNext = () => {
-    setActiveIndex((current) => (current === TESTIMONIALS.length - 1 ? 0 : current + 1));
+    triggerSlideChange(activeIndex === TESTIMONIALS.length - 1 ? 0 : activeIndex + 1);
   };
 
   return (
@@ -181,7 +201,7 @@ export default function ClientVoicesSection() {
         </div>
       </div>
 
-      <div className="relative z-10 flex w-full max-w-3xl flex-col items-center lg:h-[360px]">
+      <div className={`relative z-10 flex w-full max-w-3xl flex-col items-center lg:h-[360px] transition-opacity duration-300 ease-in-out ${isFading ? "opacity-0" : "opacity-100"}`}>
         <div className="relative flex w-full flex-1 flex-col items-center justify-start">
             {/* Mobile View: single continuous paragraph */}
             <div className="lg:hidden text-center text-neutral-600 font-light leading-relaxed px-2">
@@ -265,7 +285,7 @@ export default function ClientVoicesSection() {
               key={`dot-${index}`}
               type="button"
               aria-label={`Go to testimonial ${index + 1}`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => triggerSlideChange(index)}
               className={`relative h-1 w-6 rounded-[100px] ${
                 index === activeIndex ? "bg-color-neutral-950" : "bg-color-neutral-300"
               }`}

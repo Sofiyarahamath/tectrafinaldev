@@ -8,10 +8,10 @@ interface StatItemProps {
 const StatItem: React.FC<StatItemProps> = ({ value, label }) => {
   return (
     <div className="flex flex-col text-left gap-[12px]">
-      <span className="text-[12px] font-medium text-[#FFF] leading-[16px] tracking-normal">
+      <span className="text-[12px] font-medium text-[#FFF] leading-[16px] tracking-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] md:drop-shadow-none">
         {value}
       </span>
-      <span className="text-[12px] font-normal text-[#FFF] leading-[16px] uppercase whitespace-nowrap">
+      <span className="text-[12px] font-normal text-[#FFF] leading-[16px] uppercase whitespace-nowrap drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] md:drop-shadow-none">
         {label}
       </span>
     </div>

@@ -94,7 +94,7 @@ export default function CaseStudiesSection() {
         </div>
 
         <div className="flex w-full flex-col items-start justify-start pt-16">
-          <div className="grid w-full grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 items-stretch gap-10 lg:grid-cols-3 lg:gap-6">
             {CASE_STUDIES.map((study) => (
               <div
                 key={study.title}

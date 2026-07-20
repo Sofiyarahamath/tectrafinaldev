@@ -186,7 +186,7 @@ export default function MethodologySection() {
           </div>
 
           <div className="flex self-stretch flex-col items-start justify-start pt-16">
-            <div className="flex w-full flex-col items-start justify-start gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-4">
+            <div className="flex w-full flex-col items-start justify-start gap-16 lg:flex-row lg:items-start lg:justify-between lg:gap-4">
               {PHASES.map((item) => (
                 <div key={item.phase} className="inline-flex w-full min-w-0 flex-col items-start justify-start lg:w-64 lg:shrink-0">
                   <div className="flex self-stretch flex-col items-start justify-start">

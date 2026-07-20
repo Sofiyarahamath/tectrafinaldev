@@ -326,7 +326,7 @@ export default function IndustriesSection() {
         </div>
 
         <div className="flex w-full flex-col items-start justify-start pt-16">
-          <div className="grid w-full grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid w-full grid-cols-1 items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
             {INDUSTRY_CARDS.map((card) => (
               <IndustryCardItem key={card.title} card={card} />
             ))}

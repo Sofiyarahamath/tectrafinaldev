@@ -127,13 +127,19 @@ export default function FAQSection() {
                         </div>
                       )}
                     </button>
-                    {isOpen ? (
-                      <div className="flex w-full flex-col items-start justify-start px-4 pb-5 sm:px-6 sm:pb-6">
-                        <div className="w-full max-w-[771px] text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
-                          {item.answer}
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="flex w-full flex-col items-start justify-start px-4 pb-5 sm:px-6 sm:pb-6">
+                          <div className="w-full max-w-[771px] text-sm font-normal leading-6 text-neutral-600 font-['Aspekta']">
+                            {item.answer}
+                          </div>
                         </div>
                       </div>
-                    ) : null}
+                    </div>
                   </div>
                 </div>
               );

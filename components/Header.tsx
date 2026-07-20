@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { RiMenu4Line } from "react-icons/ri";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 px-4 md:px-8">
+    <header className="fixed top-1 md:top-6 left-0 right-0 z-50 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Floating Glassmorphic Container */}
         <div className="backdrop-blur-xl bg-black/80 border border-white/10 rounded-full px-6 py-2.5 flex items-center justify-between shadow-2xl transition-all duration-300">
@@ -119,34 +119,33 @@ export default function Header() {
             className="lg:hidden p-2 text-white/80 hover:text-white focus:outline-none cursor-pointer"
             aria-label="Toggle menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
+            {mobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+              </svg>
+            ) : (
+              <RiMenu4Line className="w-6 h-6" />
+            )}
           </button>
         </div>
 
         {/* Mobile Dropdown Menu Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-2 rounded-3xl bg-neutral-950/95 backdrop-blur-2xl border border-white/10 p-6 shadow-2xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div
+          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            mobileMenuOpen ? "max-h-[800px] opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
+          }`}
+        >
+          <div className="rounded-3xl bg-neutral-950/95 backdrop-blur-2xl border border-white/10 p-6 shadow-2xl flex flex-col gap-4 transform transition-transform duration-300 origin-top">
             <nav className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <div key={link.name}>
@@ -173,8 +172,12 @@ export default function Header() {
                           />
                         </svg>
                       </button>
-                      {servicesDropdownOpen && (
-                        <div className="pl-4 mt-1 flex flex-col gap-2 border-l border-white/10">
+                      <div
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                          servicesDropdownOpen ? "max-h-[200px] opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"
+                        }`}
+                      >
+                        <div className="pl-4 flex flex-col gap-2 border-l border-white/10">
                           <Link href="#" className="text-white/60 hover:text-white py-1 text-xs">
                             Custom Software Dev
                           </Link>
@@ -185,7 +188,7 @@ export default function Header() {
                             Digital Marketing
                           </Link>
                         </div>
-                      )}
+                      </div>
                     </div>
                   ) : (
                     <Link
@@ -209,7 +212,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );

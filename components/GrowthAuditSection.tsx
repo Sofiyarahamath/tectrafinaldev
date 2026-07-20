@@ -12,13 +12,26 @@ const CHECKLIST_ITEMS = [
 
 export default function GrowthAuditSection() {
   return (
-    <section
-      style={{
-        background: 'url("/images/f56fa2325f81246b300226c1b472dd97cdab371b.png") center/cover no-repeat',
-      }}
-      className="w-full py-16 md:py-24 px-4 md:px-8 lg:px-16 xl:px-24 select-none"
-    >
-      <div className="max-w-7xl mx-auto w-full">
+    <section className="w-full py-16 md:py-24 px-4 md:px-8 lg:px-16 xl:px-24 select-none relative">
+      {/* Background Image - visible on desktop, hidden on mobile */}
+      <div 
+        className="hidden lg:block absolute inset-0 z-0" 
+        style={{
+          background: 'url("/images/f56fa2325f81246b300226c1b472dd97cdab371b.png") center/cover no-repeat',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
+        
+        {/* Mobile Image (Visible only on mobile) */}
+        <div className="lg:hidden w-full mb-8 rounded-[32px] overflow-hidden shadow-2xl border border-neutral-800">
+          <img 
+            src="/images/f56fa2325f81246b300226c1b472dd97cdab371b.png" 
+            alt="Growth Audit Chart" 
+            className="w-full h-auto object-cover scale-105"
+          />
+        </div>
+
         {/* Centered Off-White Container Card */}
         <div
           style={{

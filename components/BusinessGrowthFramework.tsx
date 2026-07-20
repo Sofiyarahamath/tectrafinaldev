@@ -141,8 +141,8 @@ export default function BusinessGrowthFramework() {
           </div>
 
           {/* ── Cards Grid ── */}
-          <div className="overflow-x-auto pb-2 -mx-4 px-4 lg:mx-0 lg:px-0">
-            <div className="grid grid-cols-5 lg:grid-cols-5 gap-3 min-w-[700px] lg:min-w-0">
+          <div className="overflow-x-auto pb-2 -mx-4 px-4 lg:mx-0 lg:px-0 hide-scrollbar">
+            <div className="grid grid-cols-5 lg:grid-cols-5 gap-3 min-w-[220vw] sm:min-w-[700px] lg:min-w-0">
               {PHASES.map((item) => {
                 return (
                   <div

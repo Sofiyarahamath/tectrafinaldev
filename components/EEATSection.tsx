@@ -178,7 +178,7 @@ export default function EEATSection() {
             </div>
           </div>
 
-          <div className="grid min-w-0 w-full flex-1 grid-cols-1 items-stretch gap-4 md:grid-cols-2">
+          <div className="grid min-w-0 w-full flex-1 grid-cols-1 items-stretch gap-8 md:grid-cols-2">
             {EEAT_CARDS.map((card) => (
               <div
                 key={card.title}
