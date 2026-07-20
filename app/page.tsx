@@ -14,6 +14,10 @@ import GrowthAuditSection from "../components/GrowthAuditSection";
 import FooterSection from "../components/FooterSection";
 import FloatingWidgets from "../components/FloatingWidgets";
 
+
+
+
+
 export default function Home() {
   return (
     <>
